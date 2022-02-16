@@ -26,7 +26,10 @@ public class Block{
         this.hash = hashblock();
     }
 
-
+    /**
+     * creates this blocks hash
+     * @return the hash
+     */
     private MessageDigest hashblock(){
         try {
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
@@ -37,12 +40,18 @@ public class Block{
         
     }
 
-
+    /**
+     * initializes the first block in the chain
+     * @return the first block
+     */
     public static  Block genesisBlock(){
         // TODO: Add code
     }
 
-
+    /**
+     * adds a new block to the chain
+     * @return the block added
+     */
     public static Block newBlock(){
         // TODO: Add code
     }
