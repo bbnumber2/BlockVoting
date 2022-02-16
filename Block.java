@@ -1,5 +1,8 @@
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+
+import javax.crypto.EncryptedPrivateKeyInfo;
 
 public class Block{
     public Block(int index, Date timestamp, String data, MessageDigest prevHash){
@@ -7,7 +10,12 @@ public class Block{
     }
 
     private MessageDigest hashblock(){
-        // TODO: Add code
+        try {
+            MessageDigest encryption = MessageDigest.getInstance("SHA-256");
+            
+        } catch (NoSuchAlgorithmException e) {
+            //TODO: handle exception
+        }
         
     }
 
