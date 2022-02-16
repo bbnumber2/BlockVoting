@@ -23,7 +23,7 @@ public class Block{
         this.timestamp = timestamp;
         this.data = data;
         this.prevHash = prevHash;
-        this.hash = hashblock();
+        this.hash = hashBlock();
     }
 
     private byte[] combine(byte[] ... arrays){
@@ -41,7 +41,7 @@ public class Block{
         return total;
     }
 
-    private byte[] hashblock(){
+    private byte[] hashBlock(){
         try {
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
             byte[] index = this.index.toString().getBytes();
