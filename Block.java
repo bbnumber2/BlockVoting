@@ -64,8 +64,8 @@ public class Block{
      * initializes the first block in the chain
      * @return the first block
      */
-    public static  Block genesisBlock(){
-        // TODO: Add code
+    public static Block genesisBlock(){
+        return new Block(0, new Date(), "genesis block", new byte[]{});
     }
 
     /**
