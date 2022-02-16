@@ -2,14 +2,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
-import javax.crypto.EncryptedPrivateKeyInfo;
+
 
 public class Block{
-    private int index;
+    private Integer index;
     private Date timestamp;
     private String data;
-    private MessageDigest prevHash;
-    private MessageDigest hash;
+    private byte[] prevHash;
+    private byte[] hash;
 
     /**
      * default constructor for a block
@@ -18,7 +18,7 @@ public class Block{
      * @param data
      * @param prevHash
      */
-    public Block(int index, Date timestamp, String data, MessageDigest prevHash) {
+    public Block(Integer index, Date timestamp, String data, byte[] prevHash) {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
@@ -26,14 +26,37 @@ public class Block{
         this.hash = hashblock();
     }
 
+    private byte[] combine(byte[] ... arrays){
+        int length = 0;
+        for(byte[] array : arrays){
+            length += array.length;
+        }
+        byte[] total = new byte[length];
+        index = 0;
+        for(byte[] array : arrays){
+            for(byte bit : array){
+                total[index++] = bit;
+            }
+        }
+        return total;
+    }
 
-    private MessageDigest hashblock(){
+    private byte[] hashblock(){
         try {
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
+            byte[] index = this.index.toString().getBytes();
+            byte[] timestamp = this.timestamp.toString().getBytes();
+            byte[] data = this.data.getBytes();
+            byte[] prevHash = this.prevHash.toString().getBytes();
+            byte[] total = combine(index, timestamp, data, prevHash);
+            
+            encryption.update(total);
+            return encryption.digest();
             
         } catch (NoSuchAlgorithmException e) {
             //TODO: handle exception
         }
+        return null;
         
     }
 
