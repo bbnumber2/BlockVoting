@@ -72,8 +72,8 @@ public class Block{
         return this.data;
     }
 
-    public byte[] prevHash(){
-        return this.prevHash;
+    public byte[] getHash(){
+        return this.hash;
     }
 
     /**
@@ -88,8 +88,12 @@ public class Block{
      * adds a new block to the chain
      * @return the block added
      */
-    public static Block newBlock(){
-        // TODO: Add code
+    public static Block newBlock(Block prevBlock){
+        Integer index = prevBlock.getIndex() + 1;
+        Date timestamp = new Date();
+        String data = "Transaction " + index.toString();
+        byte[] prevHash = prevBlock.getHash();
+        return new Block(index, timestamp, data, prevHash);
     }
 
 }
