@@ -60,6 +60,22 @@ public class Block{
         
     }
 
+    public Integer getIndex(){
+        return this.index;
+    }
+
+    public Date getTimestamp(){
+        return this.timestamp;
+    }
+
+    public String getData(){
+        return this.data;
+    }
+
+    public byte[] prevHash(){
+        return this.prevHash;
+    }
+
     /**
      * initializes the first block in the chain
      * @return the first block
