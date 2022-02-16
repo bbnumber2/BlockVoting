@@ -60,12 +60,18 @@ public class Block{
         
     }
 
-
+    /**
+     * initializes the first block in the chain
+     * @return the first block
+     */
     public static  Block genesisBlock(){
         // TODO: Add code
     }
 
-
+    /**
+     * adds a new block to the chain
+     * @return the block added
+     */
     public static Block newBlock(){
         // TODO: Add code
     }
