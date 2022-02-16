@@ -1,1 +1,2 @@
-"Gork Coin is a new cryptocurrency, completely unaffiliated with Professor Gorkem" 
+Gork Coin is a new cryptocurrency, completely unaffiliated with Professor Gorkem
+
