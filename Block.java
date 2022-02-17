@@ -76,6 +76,10 @@ public class Block{
         return this.hash;
     }
 
+    public byte[] getPrevHash(){
+        return this.prevHash;
+    }
+
     /**
      * initializes the first block in the chain
      * @return the first block
