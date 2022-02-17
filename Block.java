@@ -87,17 +87,25 @@ public class Block{
     }
 
     /**
-     *
-     * @return
+     * gets the arraylist of data of the block
+     * @return the arraylist of data of the block
      */
     public ArrayList<String> getData(){
         return this.data;
     }
 
+    /**
+     * gets the hash value for the block
+     * @return the hash value of the block
+     */
     public byte[] getHash(){
         return this.hash;
     }
 
+    /**
+     * gets the hash value of the previous block
+     * @return the hash value of the previous block
+     */
     public byte[] getPrevHash(){
         return this.prevHash;
     }
