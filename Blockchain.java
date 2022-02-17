@@ -13,6 +13,7 @@ public class Blockchain{
         if(verify()){
             System.out.println("Verified!");
         } else{
+            // TODO: Handle failed verification
             System.out.println("Failed to verify! Removing.");
             blockchain.remove(block);
         }
