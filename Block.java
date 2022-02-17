@@ -7,7 +7,7 @@ import java.util.Date;
 public class Block{
     private Integer index;
     private Date timestamp;
-    private String data;
+    private String[] data;
     private byte[] prevHash;
     private byte[] hash;
 
@@ -18,7 +18,7 @@ public class Block{
      * @param data
      * @param prevHash
      */
-    public Block(Integer index, Date timestamp, String data, byte[] prevHash) {
+    public Block(Integer index, Date timestamp, String[] data, byte[] prevHash) {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
@@ -26,6 +26,10 @@ public class Block{
         this.hash = hashBlock();
     }
 
+    /**
+     * @param arrays
+     * @return the combined arrays in the order given
+     */
     private byte[] combine(byte[] ... arrays){
         int length = 0;
         for(byte[] array : arrays){
@@ -41,6 +45,10 @@ public class Block{
         return total;
     }
 
+    /**
+     * generates a hash for the current block
+     * @return the hash generated
+     */
     private byte[] hashBlock(){
         try {
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
@@ -60,14 +68,26 @@ public class Block{
         
     }
 
+    /**
+     * gets the index of the block
+     * @return the index of the block
+     */
     public Integer getIndex(){
         return this.index;
     }
 
+    /**
+     * gets the timestamp of the block
+     * @return the timestamp of the block
+     */
     public Date getTimestamp(){
         return this.timestamp;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getData(){
         return this.data;
     }
