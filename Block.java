@@ -1,5 +1,7 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 
@@ -7,7 +9,7 @@ import java.util.Date;
 public class Block{
     private Integer index;
     private Date timestamp;
-    private String[] data;
+    private ArrayList<String> data;
     private byte[] prevHash;
     private byte[] hash;
 
@@ -18,7 +20,7 @@ public class Block{
      * @param data
      * @param prevHash
      */
-    public Block(Integer index, Date timestamp, String[] data, byte[] prevHash) {
+    public Block(Integer index, Date timestamp, ArrayList data, byte[] prevHash) {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
@@ -54,7 +56,7 @@ public class Block{
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
             byte[] index = this.index.toString().getBytes();
             byte[] timestamp = this.timestamp.toString().getBytes();
-            byte[] data = this.data.getBytes();
+            byte[] data = this.data.toString().getBytes();
             byte[] prevHash = this.prevHash.toString().getBytes();
             byte[] total = combine(index, timestamp, data, prevHash);
             
@@ -88,7 +90,7 @@ public class Block{
      *
      * @return
      */
-    public String getData(){
+    public ArrayList<String> getData(){
         return this.data;
     }
 
@@ -101,17 +103,17 @@ public class Block{
      * @return the first block
      */
     public static Block genesisBlock(){
-        return new Block(0, new Date(), "genesis block", new byte[]{});
+        return new Block(0, new Date(), new ArrayList(Collections.singleton("GENESIS BLOCK")), new byte[]{});
     }
 
     /**
      * adds a new block to the chain
      * @return the block added
      */
-    public static Block newBlock(Block prevBlock){
+    public static Block newBlock(Block prevBlock, ArrayList votes){
         Integer index = prevBlock.getIndex() + 1;
         Date timestamp = new Date();
-        String data = "Transaction " + index.toString();
+        ArrayList data = votes;
         byte[] prevHash = prevBlock.getHash();
         return new Block(index, timestamp, data, prevHash);
     }
