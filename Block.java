@@ -20,7 +20,7 @@ public class Block{
      * @param data
      * @param prevHash
      */
-    public Block(Integer index, Date timestamp, ArrayList data, byte[] prevHash) {
+    public Block(Integer index, Date timestamp, ArrayList<String> data, byte[] prevHash) {
         this.index = index;
         this.timestamp = timestamp;
         this.data = data;
@@ -107,17 +107,17 @@ public class Block{
      * @return the first block
      */
     public static Block genesisBlock(){
-        return new Block(0, new Date(), new ArrayList(Collections.singleton("GENESIS BLOCK")), new byte[]{});
+        return new Block(0, new Date(), new ArrayList<String>(Collections.singleton("GENESIS BLOCK")), new byte[]{});
     }
 
     /**
      * adds a new block to the chain
      * @return the block added
      */
-    public static Block newBlock(Block prevBlock, ArrayList votes){
+    public static Block newBlock(Block prevBlock, ArrayList<String> votes){
         Integer index = prevBlock.getIndex() + 1;
         Date timestamp = new Date();
-        ArrayList data = votes;
+        ArrayList<String> data = votes;
         byte[] prevHash = prevBlock.getHash();
         return new Block(index, timestamp, data, prevHash);
     }
