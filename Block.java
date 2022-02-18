@@ -14,7 +14,9 @@ public class Block{
     private byte[] hash;
 
     /**
-     * default constructor for a block
+     * Default constructor for a block.
+     * Should not be called explicitly.
+     * Use the provided addBlock method to ensure hash consistency
      * @param index
      * @param timestamp
      * @param data
@@ -29,8 +31,9 @@ public class Block{
     }
 
     /**
-     * @param arrays
-     * @return the combined arrays in the order given
+     * Combines any number of byte arrays
+     * @param arrays The byte arrays to be combined
+     * @return The combined byte array
      */
     private byte[] combine(byte[] ... arrays){
         int length = 0;
@@ -48,8 +51,8 @@ public class Block{
     }
 
     /**
-     * generates a hash for the current block
-     * @return the hash generated
+     * Generates a hash for the current block
+     * @return The hash generated
      */
     private byte[] hashBlock(){
         try {
@@ -64,63 +67,62 @@ public class Block{
             return encryption.digest();
             
         } catch (NoSuchAlgorithmException e) {
-            //TODO: handle exception
+            System.out.println("Error: SHA-256 Algorithm not found!");
         }
         return null;
-        
     }
 
     /**
-     * gets the index of the block
-     * @return the index of the block
+     * Gets the index of the block
+     * @return The index of the block
      */
     public Integer getIndex(){
         return this.index;
     }
 
     /**
-     * gets the timestamp of the block
-     * @return the timestamp of the block
+     * Gets the timestamp of the block
+     * @return The timestamp of the block
      */
     public Date getTimestamp(){
         return this.timestamp;
     }
 
     /**
-     * gets the arraylist of data of the block
-     * @return the arraylist of data of the block
+     * Gets the arraylist of data of the block
+     * @return The arraylist of data of the block
      */
     public ArrayList<String> getData(){
         return this.data;
     }
 
     /**
-     * gets the hash value for the block
-     * @return the hash value of the block
+     * Gets the hash value for the block
+     * @return The hash value of the block
      */
     public byte[] getHash(){
         return this.hash;
     }
 
     /**
-     * gets the hash value of the previous block
-     * @return the hash value of the previous block
+     * Gets the hash value of the previous block
+     * @return The hash value of the previous block
      */
     public byte[] getPrevHash(){
         return this.prevHash;
     }
 
     /**
-     * initializes the first block in the chain
-     * @return the first block
+     * Initializes the first block in the chain
+     * @return The first block
      */
     public static Block genesisBlock(){
         return new Block(0, new Date(), new ArrayList<String>(Collections.singleton("GENESIS BLOCK")), new byte[]{});
     }
 
     /**
-     * adds a new block to the chain
-     * @return the block added
+     * Adds a new block to the chain
+     * @return The block added
      */
     public static Block newBlock(Block prevBlock, ArrayList<String> votes){
         Integer index = prevBlock.getIndex() + 1;
@@ -129,5 +131,4 @@ public class Block{
         byte[] prevHash = prevBlock.getHash();
         return new Block(index, timestamp, data, prevHash);
     }
-
 }
