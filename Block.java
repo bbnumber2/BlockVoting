@@ -116,7 +116,7 @@ public class Block{
      * Initializes the first block in the chain
      * @return The first block
      */
-    public static Block genesisBlock(){
+    public static Block genesisBlock() {
         return new Block(0, new Date(), new ArrayList<String>(Collections.singleton("GENESIS BLOCK")), new byte[]{});
     }
 
