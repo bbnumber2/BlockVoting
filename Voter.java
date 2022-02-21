@@ -6,7 +6,7 @@ public class Voter {
     private byte[] voterHash;
     private boolean verified;
 
-    public Voter(String name, String sex, String state, String eyeColor, 
+    public Voter(String name, String sex, String state, String eyeColor,
                 Integer height, Integer weight, Integer countyNumber, Integer voterId,
                 Date dateofBirth, Date issuingDate){
         try {

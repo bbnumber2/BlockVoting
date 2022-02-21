@@ -8,8 +8,6 @@ public class VotesList {
     private int numVotes;
     private int numItems;
 
-
-
     // This is the constructor for the class. It initializes the votes and items lists, and sets the number of votes and
     // items to 0.
     public VotesList(){
