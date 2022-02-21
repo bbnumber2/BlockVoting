@@ -8,7 +8,7 @@ public class Voter {
 
     public Voter(String name, String sex, String state, String eyeColor, 
                 Integer height, Integer weight, Integer countyNumber, Integer voterId,
-                Date dateofBirth, Date issuingDate){
+                Date dateOfBirth, Date issuingDate){
         try {
             MessageDigest encryption = MessageDigest.getInstance("SHA-256");
             // Can be replaced with combining byte arrays
@@ -20,7 +20,7 @@ public class Voter {
             encryption.update(weight.toString().getBytes());
             encryption.update(countyNumber.toString().getBytes());
             encryption.update(voterId.toString().getBytes());
-            encryption.update(dateofBirth.toString().getBytes());
+            encryption.update(dateOfBirth.toString().getBytes());
             encryption.update(issuingDate.toString().getBytes());
             voterHash = encryption.digest();
             verified = verify();
