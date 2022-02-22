@@ -1,6 +1,6 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
+import java.util.Date;
 
 public class Voter {
     private byte[] voterHash;
@@ -23,14 +23,16 @@ public class Voter {
             encryption.update(dateOfBirth.toString().getBytes());
             encryption.update(issuingDate.toString().getBytes());
             voterHash = encryption.digest();
-            verified = verify();
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Error: SHA-256 algorithm not found");
         }
     }
+
+    public byte[] getHash(){
+        return voterHash;
+    }
     
-    private static boolean verify(){
-        // TODO: Check against database
-        return false;
+    public boolean verify(Database database){
+        return database.contains(voterHash);
     }
 }
