@@ -49,4 +49,11 @@ public class Database{
         scanner.close();
     }
 
+    public String toString(){
+        String finalString = "";
+        for(byte[] hash : database){
+            finalString += hash.toString() + "\n";
+        }
+        return finalString;
+    }
 }
