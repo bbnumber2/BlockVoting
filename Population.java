@@ -41,6 +41,7 @@ public final class Population {
     }
 
     private void generatePopulation(int populationSize) {
+        System.out.println("Generating population!");
         population = new ArrayList<Voter>();
         for(int i = 0; i < populationSize; i++){
             String name = names.get(random.nextInt(names.size()));
@@ -57,7 +58,12 @@ public final class Population {
         }
     }
 
+    public ArrayList<Voter> getPopulation(){
+        return population;
+    }
+
     private void generateIssuingDates() {
+        System.out.println("Generating issuing dates!");
         issuingDates = new ArrayList<Date>();
         for(int year = 0; year <= 103; year++){
             for(int month = 1; month < 13; month++){
@@ -69,6 +75,7 @@ public final class Population {
     }
 
     private void generateDateOfBirths() {
+        System.out.println("Generating date of births!");
         dateOfBirths = new ArrayList<Date>();
         for(int year = 0; year <= 103; year++){
             for(int month = 1; month < 13; month++){
@@ -80,13 +87,15 @@ public final class Population {
     }
 
     private void generateVoterIds() {
+        System.out.println("Generating voter IDs!");
         voterIds = new ArrayList<Integer>();
-        for(int i = 100000000; i < 999999999; i++){
+        for(int i = 100_000; i < 999_999; i++){
             voterIds.add(i);
         }
     }
 
     private void generateCountyNumbers() {
+        System.out.println("Generating county numbers!");
         countyNumbers = new ArrayList<Integer>();
         for(int i = 1; i < 101; i++){
             countyNumbers.add(i);
@@ -94,6 +103,7 @@ public final class Population {
     }
 
     private void generateWeights() {
+        System.out.println("Generating weights!");
         weights = new ArrayList<Integer>();
         for(int i = 45; i < 137; i++){
             weights.add(i);
@@ -101,6 +111,7 @@ public final class Population {
     }
 
     private void generateHeights() {
+        System.out.println("Generating heights!");
         heights = new ArrayList<Integer>();
         for(int i = 120; i < 213; i++){
             heights.add(i);
@@ -108,6 +119,7 @@ public final class Population {
     }
 
     private void generateEyeColors() {
+        System.out.println("Generating eye colors!");
         eyeColors = new ArrayList<String>();
         eyeColors.add("Brown");
         eyeColors.add("Blue");
@@ -117,6 +129,7 @@ public final class Population {
     }
 
     private void generateStates() {
+        System.out.println("Generating states!");
         states = new ArrayList<String>();
         File statesFile = new File("states.txt");
         try {
@@ -131,12 +144,14 @@ public final class Population {
     }
 
     private void generateSexes() {
+        System.out.println("Generating sexes!");
         sexes = new ArrayList<String>();
         sexes.add("Male");
         sexes.add("Female");
     }
 
     private void generateNames(){
+        System.out.println("Generating names!");
         names = new ArrayList<String>();
         File nameFile = new File("names.txt");
         try {
