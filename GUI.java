@@ -35,8 +35,9 @@ class GUI extends JFrame implements ActionListener {
         // create an object of the text class
         GUI te = new GUI();
 
-        // addActionListener to button
+        // addActionListener to button and set action command
         b.addActionListener(te);
+        b.setActionCommand("submit");
 
         // create an object of JTextField with 16 columns
         t = new JTextField(16);
@@ -55,7 +56,15 @@ class GUI extends JFrame implements ActionListener {
         // set the size of frame
         f.setSize(300, 300);
 
-        f.show();
+        // add window listener for closing
+        f.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                // TODO: add proper closing mechanism
+                System.exit(0);
+            }
+        });
+
+        f.setVisible(true);
     }
 
     // if the button is pressed
@@ -67,7 +76,7 @@ class GUI extends JFrame implements ActionListener {
             l.setText(t.getText());
 
             // set the text of field to blank
-            t.setText(" ");
+            t.setText("");
         }
     }
 }
